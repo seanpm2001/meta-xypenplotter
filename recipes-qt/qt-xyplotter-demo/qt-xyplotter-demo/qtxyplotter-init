@@ -1,0 +1,58 @@
+#!/bin/sh
+
+set -e
+
+if [ -f /usr/sbin/Xorg ]; then
+	QTDEMO="qtxyplotter > /var/log/Xsession.log 2> &1"
+else
+	QTEMBEDDED="1"
+	QTDEMO="qtxyplotter -qws"
+	export QWS_DISPLAY="LinuxFb:/dev/fb:genericcolors"
+	export QWS_KEYBOARD="USB:/dev/input/event-keyboard"
+	export QWS_MOUSE_PROTO="LinuxInput:/dev/input/event-mouse"
+fi
+
+case "$1" in
+  start)
+	echo "Starting XY Plotter Demo"
+	if [ -f /etc/profile.d/tslib.sh ]; then
+		source /etc/profile.d/tslib.sh
+		:
+	fi
+	if [ -e "$TSLIB_TSDEVICE" ]; then
+		if [ ! -f /etc/pointercal ]; then
+			/usr/bin/ts_calibrate
+		fi
+		if [ "$QTEMBEDDED" == "1" ]; then
+			QWS_MOUSE_PROTO=tslib:$TSLIB_TSDEVICE
+		fi
+	fi
+
+	# If not Qt Embedded, start X-Server and export display..
+	if [ "$QTEMBEDDED" == "0" ]; then
+		Xorg &
+		export DISPLAY=:0
+	fi
+
+	$QTDEMO &
+	;;
+  stop)
+	echo "Stopping XY Plotter Demo"
+	if [ "$QTDEMO" == qtdemo ]; then
+		killall Xorg
+		killall qtdemo
+	else
+		killall qtdemoE
+	fi
+	;;
+  restart)
+	$0 stop
+	$0 start
+	;;
+  *)
+	echo "usage: $0 { start | stop | restart }" >&2
+	exit 1
+	;;
+esac
+
+exit 0
