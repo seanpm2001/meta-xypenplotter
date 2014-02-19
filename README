@@ -12,4 +12,6 @@ Then, do this steps:
 
 Finally call bitbake to build the specific image:
 3. $ MACHINE=colibri-vf bitbake qt4e-xyplotter-image
- 
+
+To create a SDK which includes Qt Embedded and libmcc as well
+4. $ MACHINE=colibri-vf bitbake -k meta-toolchain-qte-xyprinter
