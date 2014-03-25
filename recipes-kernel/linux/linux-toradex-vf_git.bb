@@ -3,12 +3,13 @@ require recipes-kernel/linux/linux.inc
 
 LINUX_VERSION ?= "3.0.15"
 
-SRCREV_colibri-vf = "1c272deae1df4114d94c561bf2fe401b5c9ca6e4"
+# Work on very latest revision
+SRCREV_colibri-vf = "${AUTOREV}"
 PR_colibri-vf = "V2.1b3"
 
 PV = "${LINUX_VERSION}+gitr${SRCREV}"
 S = "${WORKDIR}/git"
-SRC_URI = "git://git.toradex.com/linux-toradex.git;protocol=git;branch=vybrid-latest-merge"
+SRC_URI = "git://git.toradex.com/linux-toradex.git;protocol=git;branch=colibri_vf_next"
 # a Patch
 # SRC_URI += "file://a.patch "
 
