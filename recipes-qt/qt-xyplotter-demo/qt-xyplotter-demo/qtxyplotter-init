@@ -2,11 +2,14 @@
 
 set -e
 
+# Add default deployment path of QtCreator to PATH
+export PATH=/opt/xypenplotter/bin/:$PATH
+
 if [ -f /usr/sbin/Xorg ]; then
 	QTDEMO="qtxyplotter > /var/log/Xsession.log 2> &1"
 else
 	QTEMBEDDED="1"
-	QTDEMO="qtxyplotter -qws"
+	QTDEMO="xypenplotter -qws"
 	export QWS_DISPLAY="LinuxFb:/dev/fb:genericcolors"
 	export QWS_KEYBOARD="USB:/dev/input/event-keyboard"
 	export QWS_MOUSE_PROTO="LinuxInput:/dev/input/event-mouse"
@@ -38,12 +41,7 @@ case "$1" in
 	;;
   stop)
 	echo "Stopping XY Plotter Demo"
-	if [ "$QTDEMO" == qtdemo ]; then
-		killall Xorg
-		killall qtdemo
-	else
-		killall qtdemoE
-	fi
+	killall xypenplotter
 	;;
   restart)
 	$0 stop

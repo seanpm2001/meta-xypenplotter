@@ -5,8 +5,9 @@ SRC_URI = " \
     file://mouse.rules \
     file://keyboard.rules \
     file://fusion.conf \
+    file://mcc.conf \
 "
-PR = "r0"
+PR = "r1"
 
 TOUCH = ' ${@base_contains("MACHINE_FEATURES", "touchscreen", "tslib tslib-calibrate tslib-tests", "",d)}'
 RDEPENDS_${PN} = " \
@@ -44,6 +45,7 @@ do_install() {
     install -m 0644 ${WORKDIR}/mouse.rules ${D}${sysconfdir}/udev/rules.d/
     install -m 0644 ${WORKDIR}/keyboard.rules ${D}${sysconfdir}/udev/rules.d/
     install -m 0644 ${WORKDIR}/fusion.conf ${D}${sysconfdir}/modules-load.d/
+    install -m 0644 ${WORKDIR}/mcc.conf ${D}${sysconfdir}/modules-load.d/
 }
 
 inherit update-rc.d allarch
