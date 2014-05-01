@@ -12,7 +12,7 @@ else
 	QTDEMO="xypenplotter -qws"
 	export QWS_DISPLAY="LinuxFb:/dev/fb:genericcolors"
 	export QWS_KEYBOARD="USB:/dev/input/event-keyboard"
-	export QWS_MOUSE_PROTO="LinuxInput:/dev/input/event-mouse"
+	export QWS_MOUSE_PROTO="tslib:/dev/input/touchscreen0"
 fi
 
 case "$1" in
