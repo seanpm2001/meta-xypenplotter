@@ -1,0 +1,11 @@
+--- u-boot_orig/include/configs/colibri_vf.h	2014-06-23 13:28:31.101596657 +0200
++++ u-boot/include/configs/colibri_vf.h	2014-06-23 13:38:18.329629223 +0200
+@@ -167,7 +167,7 @@
+ 	"ubiargs=ip=off ubi.mtd=rootfs-ubi root=ubi0:rootfs rw " \
+ 		"rootfstype=ubifs\0" \
+ 	"ubiboot=" UBI_BOOTCMD "\0" \
+-	"vidargs=video=dcufb:640x480-16@60\0" \
++	"vidargs=video=dcufb:1024x600\0" \
+ 	""
+ 
+ /* Miscellaneous configurable options */

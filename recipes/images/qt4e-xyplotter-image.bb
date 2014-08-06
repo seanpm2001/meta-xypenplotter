@@ -4,7 +4,7 @@ DESCRIPTION = "Image based on qt4e-demo-image.bb"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58"
 
-PV = "V2.1"
+PV = "V2.2"
 PR = "r0"
 
 #start of the resulting deployable tarball name
@@ -51,7 +51,6 @@ IMAGE_INSTALL += " \
     task-base-extended \
     \
     bash \
-    tinylogin \
     \
     alsa-states \
 "
@@ -61,7 +60,7 @@ require recipes/images/trdx-extra.inc
 IMAGE_DEV_MANAGER   = "udev"
 IMAGE_INIT_MANAGER  = "systemd"
 IMAGE_INITSCRIPTS   = " "
-IMAGE_LOGIN_MANAGER = "tinylogin shadow"
+IMAGE_LOGIN_MANAGER = "shadow"
 
 export IMAGE_BASENAME = "qt-image"
 

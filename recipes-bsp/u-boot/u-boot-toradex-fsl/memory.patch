@@ -1,0 +1,16 @@
+--- u-boot_orig/board/toradex/colibri_vf/colibri_vf.c	2014-06-23 13:28:31.287595612 +0200
++++ u-boot/board/toradex/colibri_vf/colibri_vf.c	2014-06-23 13:32:26.411407137 +0200
+@@ -582,11 +582,11 @@
+ 		switch (gd->ram_size) {
+ 		case 0x08000000:
+ 			/* 128 MB */
+-			setenv("memargs", "mem=128M");
++			setenv("memargs", "mem=112M");
+ 			break;
+ 		case 0x10000000:
+ 			/* 256 MB */
+-			setenv("memargs", "mem=256M");
++			setenv("memargs", "mem=240M");
+ 			break;
+ 		default:
+ 			printf("Failed detecting RAM size.\n");
