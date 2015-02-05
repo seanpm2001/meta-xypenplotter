@@ -9,7 +9,7 @@ LIC_FILES_CHKSUM = "file://README.md;md5=aaa3c304de2b3a1a0e1ff13043fa4975 \
                     file://main.cpp;md5=44833ee9b5700153b40df283121647f2"
 
 SRC_URI = " \
-    git://github.com/toradex/XYPenPlotter.git \
+    git://github.com/toradex/XYPenPlotter.git;branch=with-libmcc \
     file://qtxyplotter-init \
     file://mouse.rules \
     file://keyboard.rules \
