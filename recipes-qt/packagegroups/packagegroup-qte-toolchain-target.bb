@@ -10,7 +10,7 @@ RDEPENDS_${PN} += " \
 	libmcc \
 	libmcc-dev \
 	libmcc-staticdev \
-	kernel-module-mcc \
-	kernel-module-mcc-dev \
-	kernel-headers \
+	kernel-module-mcc-toradex \
+	kernel-module-mcc-toradex-dev \
+	kernel-devsrc \
 "
